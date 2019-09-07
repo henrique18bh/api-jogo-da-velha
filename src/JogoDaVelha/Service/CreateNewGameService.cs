@@ -29,11 +29,12 @@ namespace JogoDaVelha.Service
             GameModel game = new GameModel
             {
                 Id = Guid.NewGuid(),
-                FirstPlayer = DifineFirtPlayer()
+                FirstPlayer = DifineFirtPlayer(),
+                StateGame = StateGame.InProgress
             };
             game.NextPlayer = game.FirstPlayer;
             _gameRepository.SaveGame(game);
-            _logger.LogInformation("Created Matc {@Id} não encontrado", game.Id);
+            _logger.LogInformation("Created Match {@Id}", game.Id);
             return _objectConverter.Map<CreateNewGameResponse>(game);
         }
 
