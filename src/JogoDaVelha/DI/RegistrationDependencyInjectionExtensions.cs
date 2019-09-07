@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using JogoDaVelha.Mapper;
+using JogoDaVelha.Service;
+using JogoDaVelha.Service.Interfaces;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -15,7 +18,7 @@ namespace JogoDaVelha.DI
 
             RegisterRepositories(services, configuration);
             RegisterServices(services);
-            //services.AddSingleton<IObjectConverter, ObjectConverter>();
+            services.AddSingleton<IObjectConverter, ObjectConverter>();
         }
 
         private static void RegisterRepositories(IServiceCollection services, IConfiguration configuration = null)
@@ -26,8 +29,7 @@ namespace JogoDaVelha.DI
 
         private static void RegisterServices(IServiceCollection services)
         {
-            //services.AddScoped<IGameService, GameService>();
-
+            services.AddScoped<ICreateNewGameService, CreateNewGameService>();
         }
 
 
