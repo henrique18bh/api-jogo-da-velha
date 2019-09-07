@@ -9,6 +9,6 @@ namespace JogoDaVelha.Controllers.ViewModel
     public class GameViewModel
     {
         public Guid Id { get; set; }
-        public TypePlayer FirstPlayer { get; set; }
+        public string FirstPlayer { get; set; }
     }
 }

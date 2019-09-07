@@ -1,4 +1,6 @@
 ﻿using JogoDaVelha.Mapper;
+using JogoDaVelha.Repository;
+using JogoDaVelha.Repository.Interfaces;
 using JogoDaVelha.Service;
 using JogoDaVelha.Service.Interfaces;
 using Microsoft.Extensions.Configuration;
@@ -23,7 +25,7 @@ namespace JogoDaVelha.DI
 
         private static void RegisterRepositories(IServiceCollection services, IConfiguration configuration = null)
         {
-            //services.AddTransient<ICachedRepository, CachedRepository>();
+            services.AddTransient<IGameRepository, GameRepository>();
 
         }
 

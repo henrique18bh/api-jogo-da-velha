@@ -14,6 +14,7 @@ namespace JogoDaVelha.Mapper
             return new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new ResponseToViewModelProfile());
+                cfg.AddProfile(new ModelToResponseProfile());
             });
         }
     }

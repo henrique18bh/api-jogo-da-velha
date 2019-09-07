@@ -12,7 +12,9 @@ namespace JogoDaVelha.Mapper.Profiles
     {
         public ResponseToViewModelProfile()
         {
-            CreateMap<CreateNewGameResponse, GameViewModel>();
+            CreateMap<CreateNewGameResponse, GameViewModel>()
+                .ForMember(dest => dest.FirstPlayer, opt => opt.MapFrom(src => src.FirstPlayer.ToString()));
+
         }
     }
 }
