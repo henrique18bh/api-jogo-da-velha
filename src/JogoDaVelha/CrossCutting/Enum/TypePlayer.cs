@@ -11,6 +11,6 @@ namespace JogoDaVelha.CrossCutting.Enum
         [Description("Player X")]
         X,
         [Description("Player O")]
-        O = 'O'
+        O
     }
 }
