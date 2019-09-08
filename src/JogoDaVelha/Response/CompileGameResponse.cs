@@ -1,14 +1,15 @@
-﻿using System;
+﻿using JogoDaVelha.CrossCutting.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace JogoDaVelha.Controllers.ViewModel
+namespace JogoDaVelha.Response
 {
-    public class MovementViewModel
+    public class CompileGameResponse
     {
         public string Msg { get; set; }
         public string Status { get; set; }
-        public string Winner { get; set; }
+        public StateGame Winner { get; set; }
     }
 }

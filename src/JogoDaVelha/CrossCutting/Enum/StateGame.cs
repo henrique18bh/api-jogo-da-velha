@@ -8,6 +8,8 @@ namespace JogoDaVelha.CrossCutting.Enum
     public enum StateGame
     {
         InProgress,
-        End
+        Draw,
+        X,
+        O
     }
 }

@@ -13,5 +13,6 @@ namespace JogoDaVelha.Model
         public TypePlayer FirstPlayer { get; set; }
         public StateGame StateGame { get; set; }
         public TypePlayer NextPlayer { get; set; }
+        public BoardModel Board { get; set; }
     }
 }

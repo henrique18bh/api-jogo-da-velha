@@ -14,6 +14,8 @@ namespace JogoDaVelha.Mapper.Profiles
         {
             CreateMap<CreateNewGameResponse, GameViewModel>()
                 .ForMember(dest => dest.FirstPlayer, opt => opt.MapFrom(src => src.FirstPlayer.ToString()));
+            CreateMap<ExecuteMovementResponse, MovementViewModel>()
+                .ForMember(dest => dest.Winner, opt => opt.MapFrom(src => src.Winner.ToString()));
 
         }
     }

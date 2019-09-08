@@ -17,13 +17,13 @@ namespace JogoDaVelha.DI
         public static void AddRegistrationDependencies(this IServiceCollection services, IConfiguration configuration = null)
         {
             services.AddSingleton(configuration);
-
-            RegisterRepositories(services, configuration);
-            RegisterServices(services);
             services.AddSingleton<IObjectConverter, ObjectConverter>();
+
+            RegisterRepositories(services);
+            RegisterServices(services);
         }
 
-        private static void RegisterRepositories(IServiceCollection services, IConfiguration configuration = null)
+        private static void RegisterRepositories(IServiceCollection services)
         {
             services.AddTransient<IGameRepository, GameRepository>();
 
@@ -32,6 +32,9 @@ namespace JogoDaVelha.DI
         private static void RegisterServices(IServiceCollection services)
         {
             services.AddScoped<ICreateNewGameService, CreateNewGameService>();
+            services.AddScoped<IExecuteMovementService, ExecuteMovementService>();
+            services.AddScoped<ICompileGameService, CompileGameService>();
+            services.AddScoped<IValidateGameService, ValidateGameService>();
         }
 
 

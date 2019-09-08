@@ -1,4 +1,5 @@
 ﻿using JogoDaVelha.Controllers.ViewModel;
+using JogoDaVelha.CrossCutting.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -36,8 +37,23 @@ namespace JogoDaVelha.Middlewares
         {
             int statusCode = StatusCodes.Status500InternalServerError;
             object response = null;
-            response = new ErrorViewModel("InternalServerError", "Ocorreu um erro interno ao processar a requisição.");
-            _logger.LogCritical(ex, "Ocorreu um erro interno ao processar a requisição");
+            if (ex is BusinessException)
+            {
+                response = new ErrorViewModel("UnprocessableEntity", ex.Message);
+                statusCode = StatusCodes.Status422UnprocessableEntity;
+                _logger.LogError(ex, "Ocorreu um erro interno ao processar a requisição");
+            }
+            else if (ex is NotFoundException)
+            {
+                response = new ErrorViewModel("NotFound", ex.Message);
+                statusCode = StatusCodes.Status404NotFound;
+                _logger.LogInformation(ex, $"Dados não encontrados - {ex.Message}");
+            }
+            else
+            {
+                response = new ErrorViewModel("InternalServerError", "Ocorreu um erro interno ao processar a requisição.");
+                _logger.LogCritical(ex, "Ocorreu um erro interno ao processar a requisição");
+            }
             context.Response.StatusCode = statusCode;
             context.Response.ContentType = "application/json";
 

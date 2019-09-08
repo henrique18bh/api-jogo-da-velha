@@ -30,7 +30,8 @@ namespace JogoDaVelha.Service
             {
                 Id = Guid.NewGuid(),
                 FirstPlayer = DifineFirtPlayer(),
-                StateGame = StateGame.InProgress
+                StateGame = StateGame.InProgress,
+                Board = new BoardModel()
             };
             game.NextPlayer = game.FirstPlayer;
             _gameRepository.SaveGame(game);
