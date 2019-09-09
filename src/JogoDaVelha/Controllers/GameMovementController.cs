@@ -37,7 +37,7 @@ namespace JogoDaVelha.Controllers
         [ProducesResponseType(typeof(ErrorViewModel), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ErrorViewModel), StatusCodes.Status422UnprocessableEntity)]
         [ProducesResponseType(typeof(ErrorViewModel), StatusCodes.Status500InternalServerError)]
-        public IActionResult Post(string id, [FromBody]ExecuteMovementRequest request)
+        public IActionResult Post([FromBody]ExecuteMovementRequest request)
         {
             var response = _executeMovementService.ExecuteMovement(request);
             return Ok(BuildSuccessResponse(_objectConverter.Map<MovementViewModel>(response)));

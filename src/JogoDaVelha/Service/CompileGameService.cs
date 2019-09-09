@@ -123,7 +123,7 @@ namespace JogoDaVelha.Service
                         {
                             validDiagonalA++;
                         }
-                        if (x != y && playerPositions.Any(p => p.X == x && p.Y == y))
+                        if ((x != y || (x == 1 && y == 1)) && playerPositions.Any(p => p.X == x && p.Y == y))
                         {
                             validDiagonalB++;
                         }
